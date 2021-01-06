@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import MapDemo from "./MapDemo";
 
 class GeolocationDemo extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            latitude: '',
+            longitude: ''
         }
     }
 
@@ -35,6 +37,7 @@ class GeolocationDemo extends Component {
         return (
             <div>
                 <h4>Using geolocation JavaScript API in React</h4>
+                <MapDemo location={this.state}/>
             </div>
         )
     }
