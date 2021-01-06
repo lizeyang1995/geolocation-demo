@@ -7,16 +7,28 @@ class GeolocationDemo extends Component {
 
         }
     }
-    
+
+    // componentDidMount() {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //         console.log(position);
+    //         console.log("latitude is:", position.coords.latitude);
+    //         console.log("longitude is:", position.coords.longitude);
+    //     },
+    //     function(error) {
+    //         console.error("error code = " + error.code + " - " + error.message);
+    //     })
+    // }
+
     componentDidMount() {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log(position);
-            console.log("latitude is:", position.coords.latitude);
-            console.log("longitude is:", position.coords.longitude);
-        },
-        function(error) {
-            console.error("error code = " + error.code + " - " + error.message);
-        })
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(
+                function (position) {
+                    console.log(position);
+                },
+                function (error) {
+                    console.error("error code = " + error.code + " - " + error.message);
+                })
+        }
     }
 
     render() {
